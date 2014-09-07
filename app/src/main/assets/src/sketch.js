@@ -3,7 +3,7 @@ var maxDots = 100;
 
 function Dot() {
 	this.diameter = random(100);
-	this.x = random(windowWidth);
+	this.x = random(displayWidth);
 	this.y = this.diameter * -1;
 	this.color = color(
 	      random(255),
@@ -12,18 +12,18 @@ function Dot() {
 	);
 }
 
-Dot.prototype.display = function() {
+Dot.prototype.draw = function() {
 	noStroke();
 	fill(this.color);
 	ellipse(this.x, this.y, this.diameter, this.diameter);
 }
 
 Dot.prototype.fall = function() {
-	this.y += this.diameter / 50;
+	this.y += this.diameter;
 }
 
 function setup() {
-  createCanvas(windowWidth, windowHeight);
+  createCanvas(displayWidth, displayHeight);
 }
 
 function draw() {
@@ -44,10 +44,10 @@ function draw() {
 	var dead = [];
 
 	for (var i in dots) {
-		dots[i].display();
+		dots[i].draw();
 		dots[i].fall();
 
-		if (dots[i].y > windowWidth) {
+		if (dots[i].y > displayWidth + dots[i].diameter) {
 			dead.push(i);
 		}
 	}
