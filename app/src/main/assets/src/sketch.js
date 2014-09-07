@@ -39,7 +39,7 @@ function draw() {
 		dots[i].fall();
 
 		if (dots[i].y > windowWidth) {
-			dead.push(i);:w
+			dead.push(i);
 		}
 	}
 
